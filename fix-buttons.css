@@ -1,0 +1,44 @@
+/* CORRECTION DRASTIQUE POUR LES BOUTONS */
+
+/* Forcer TOUS les boutons de la sidebar à avoir des coins carrés */
+footer button,
+.sidebar button,
+button[class*="rounded-"] {
+  border-radius: 8px !important;
+  overflow: visible !important;
+}
+
+/* Éliminer COMPLÈTEMENT l'effet d'overlay arrondi */
+footer button::before,
+footer button::after,
+.sidebar button::before,
+.sidebar button::after,
+button[class*="rounded-"]::before,
+button[class*="rounded-"]::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Forcer le style normal au survol */
+footer button:hover,
+.sidebar button:hover {
+  background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #F97316 100%) !important;
+  color: white !important;
+  border-color: white !important;
+  border-radius: 8px !important;
+}
+
+/* Assurer la visibilité du texte */
+footer button:hover *,
+.sidebar button:hover * {
+  color: white !important;
+}
+
+/* Supprimer toute transformation qui pourrait créer un overlay */
+footer button,
+.sidebar button {
+  transform: none !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+  clip-path: none !important;
+}

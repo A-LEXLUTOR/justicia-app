@@ -1,0 +1,536 @@
+export interface DocumentTemplate {
+    id: string;
+    title: string;
+    category: string;
+    description: string;
+    filename: string;
+    filePath: string;
+    fields: TemplateField[];
+    aiPrompt: string;
+}
+
+export interface TemplateField {
+    name: string;
+    label: string;
+    type: 'text' | 'date' | 'number' | 'textarea' | 'select';
+    required: boolean;
+    placeholder?: string;
+    options?: string[];
+}
+
+export const TEMPLATE_CATEGORIES = [
+    'Courriers et Mises en Demeure',
+    'Réceptions et Livraisons',
+    'Contrats et Conventions',
+    'Gestion de Chantier',
+    'Mise à Disposition de Terrains',
+    'Autres Documents'
+];
+
+export const DOCUMENT_TEMPLATES: DocumentTemplate[] = [
+    {
+        id: 'journal-chantier',
+        title: 'Journal de Chantier',
+        category: 'Gestion de Chantier',
+        description: 'Modèle de journal de chantier pour le suivi quotidien des travaux',
+        filename: 'MODELEJOURNALDECHANTIER.xlsx',
+        filePath: '/home/ubuntu/upload/MODELEJOURNALDECHANTIER.xlsx',
+        fields: [
+            { name: 'projet', label: 'Nom du Projet', type: 'text', required: true },
+            { name: 'date', label: 'Date', type: 'date', required: true },
+            { name: 'conditions_meteo', label: 'Conditions Météo', type: 'text', required: false },
+            { name: 'effectif', label: 'Effectif', type: 'number', required: false },
+            { name: 'travaux_realises', label: 'Travaux Réalisés', type: 'textarea', required: true },
+            { name: 'observations', label: 'Observations', type: 'textarea', required: false }
+        ],
+        aiPrompt: 'Générer un journal de chantier détaillé pour le projet {projet} en date du {date}. Inclure les conditions météo, l\'effectif présent, les travaux réalisés et les observations pertinentes.'
+    },
+    {
+        id: 'validation-plans',
+        title: 'Courrier de Validation de Plans',
+        category: 'Courriers et Mises en Demeure',
+        description: 'Courrier type pour valider des plans de construction',
+        filename: 'COURRIERTYPEDEVALIDATIONDEPLANS.docx',
+        filePath: '/home/ubuntu/upload/COURRIERTYPEDEVALIDATIONDEPLANS.docx',
+        fields: [
+            { name: 'destinataire', label: 'Destinataire', type: 'text', required: true },
+            { name: 'projet', label: 'Nom du Projet', type: 'text', required: true },
+            { name: 'reference_plans', label: 'Référence des Plans', type: 'text', required: true },
+            { name: 'date_reception', label: 'Date de Réception', type: 'date', required: true },
+            { name: 'observations', label: 'Observations', type: 'textarea', required: false }
+        ],
+        aiPrompt: 'Rédiger un courrier professionnel de validation de plans pour le projet {projet}, adressé à {destinataire}. Les plans référencés {reference_plans} ont été reçus le {date_reception}. Inclure les observations: {observations}'
+    },
+    {
+        id: 'mise-demeure-avancement',
+        title: 'Mise en Demeure - Avancement des Travaux',
+        category: 'Courriers et Mises en Demeure',
+        description: 'Mise en demeure pour retard d\'avancement des travaux',
+        filename: 'PORTEOBTPCI-MODELETYPEMISEENDEMEUREAVANCEMENTDESTRAVAUX-NOUVELLEMOUTUREDECONTRATS.docx',
+        filePath: '/home/ubuntu/upload/PORTEOBTPCI-MODELETYPEMISEENDEMEUREAVANCEMENTDESTRAVAUX-NOUVELLEMOUTUREDECONTRATS.docx',
+        fields: [
+            { name: 'entreprise', label: 'Nom de l\'Entreprise', type: 'text', required: true },
+            { name: 'projet', label: 'Nom du Projet', type: 'text', required: true },
+            { name: 'contrat_ref', label: 'Référence du Contrat', type: 'text', required: true },
+            { name: 'retard_jours', label: 'Retard (en jours)', type: 'number', required: true },
+            { name: 'motifs', label: 'Motifs du Retard Constatés', type: 'textarea', required: true },
+            { name: 'delai_regularisation', label: 'Délai de Régularisation (jours)', type: 'number', required: true }
+        ],
+        aiPrompt: 'Rédiger une mise en demeure formelle à l\'entreprise {entreprise} concernant le retard de {retard_jours} jours sur le projet {projet} (contrat {contrat_ref}). Motifs: {motifs}. Exiger une régularisation sous {delai_regularisation} jours.'
+    },
+    {
+        id: 'mise-demeure-qualite',
+        title: 'Mise en Demeure - Qualité des Travaux',
+        category: 'Courriers et Mises en Demeure',
+        description: 'Mise en demeure pour non-conformité de la qualité des travaux',
+        filename: 'PORTEOBTPCI-MISEENDEMEUREQUALITEDESTRAVAUX-NOUVELLEMOUTUREDECONTRATS.docx',
+        filePath: '/home/ubuntu/upload/PORTEOBTPCI-MISEENDEMEUREQUALITEDESTRAVAUX-NOUVELLEMOUTUREDECONTRATS.docx',
+        fields: [
+            { name: 'entreprise', label: 'Nom de l\'Entreprise', type: 'text', required: true },
+            { name: 'projet', label: 'Nom du Projet', type: 'text', required: true },
+            { name: 'contrat_ref', label: 'Référence du Contrat', type: 'text', required: true },
+            { name: 'non_conformites', label: 'Non-conformités Constatées', type: 'textarea', required: true },
+            { name: 'delai_reprise', label: 'Délai de Reprise (jours)', type: 'number', required: true }
+        ],
+        aiPrompt: 'Rédiger une mise en demeure à l\'entreprise {entreprise} pour non-conformité qualité sur le projet {projet} (contrat {contrat_ref}). Non-conformités: {non_conformites}. Exiger une reprise sous {delai_reprise} jours.'
+    },
+    {
+        id: 'mise-demeure-hse',
+        title: 'Mise en Demeure - HSE',
+        category: 'Courriers et Mises en Demeure',
+        description: 'Mise en demeure pour manquements HSE (Hygiène, Sécurité, Environnement)',
+        filename: 'PORTEOBTPCI-MISEENDEMEUREHSE-NOUVELLEMOUTUREDECONTRATS.docx',
+        filePath: '/home/ubuntu/upload/PORTEOBTPCI-MISEENDEMEUREHSE-NOUVELLEMOUTUREDECONTRATS.docx',
+        fields: [
+            { name: 'entreprise', label: 'Nom de l\'Entreprise', type: 'text', required: true },
+            { name: 'projet', label: 'Nom du Projet', type: 'text', required: true },
+            { name: 'manquements_hse', label: 'Manquements HSE Constatés', type: 'textarea', required: true },
+            { name: 'risques', label: 'Risques Identifiés', type: 'textarea', required: true },
+            { name: 'delai_conformite', label: 'Délai de Mise en Conformité (jours)', type: 'number', required: true }
+        ],
+        aiPrompt: 'Rédiger une mise en demeure HSE urgente à l\'entreprise {entreprise} sur le projet {projet}. Manquements: {manquements_hse}. Risques: {risques}. Exiger une mise en conformité sous {delai_conformite} jours.'
+    },
+    {
+        id: 'retard-devoiement-reseaux',
+        title: 'Retard - Dévoiement de Réseaux',
+        category: 'Courriers et Mises en Demeure',
+        description: 'Courrier pour retard des entreprises chargées du dévoiement de réseaux',
+        filename: 'MODELETYPERETARDDESENTREPRISECHARGEESDESDEVOIEMENTSDERESEAUX.docx',
+        filePath: '/home/ubuntu/upload/MODELETYPERETARDDESENTREPRISECHARGEESDESDEVOIEMENTSDERESEAUX.docx',
+        fields: [
+            { name: 'entreprise', label: 'Nom de l\'Entreprise', type: 'text', required: true },
+            { name: 'type_reseau', label: 'Type de Réseau', type: 'select', required: true, options: ['Électricité', 'Eau', 'Gaz', 'Télécommunications', 'Assainissement'] },
+            { name: 'retard_jours', label: 'Retard (en jours)', type: 'number', required: true },
+            { name: 'impact', label: 'Impact sur le Chantier', type: 'textarea', required: true }
+        ],
+        aiPrompt: 'Rédiger un courrier concernant le retard de {retard_jours} jours de l\'entreprise {entreprise} pour le dévoiement du réseau {type_reseau}. Impact: {impact}.'
+    },
+    {
+        id: 'demande-info-complementaires',
+        title: 'Demande d\'Informations Complémentaires',
+        category: 'Courriers et Mises en Demeure',
+        description: 'Courrier type pour demander des informations complémentaires',
+        filename: 'COURRIERTYPE-DEMANDED\'INFORMATIONCOMPLEMENTAIRES.docx',
+        filePath: '/home/ubuntu/upload/COURRIERTYPE-DEMANDED\'INFORMATIONCOMPLEMENTAIRES.docx',
+        fields: [
+            { name: 'destinataire', label: 'Destinataire', type: 'text', required: true },
+            { name: 'objet', label: 'Objet de la Demande', type: 'text', required: true },
+            { name: 'informations_demandees', label: 'Informations Demandées', type: 'textarea', required: true },
+            { name: 'delai_reponse', label: 'Délai de Réponse (jours)', type: 'number', required: true }
+        ],
+        aiPrompt: 'Rédiger une demande d\'informations complémentaires à {destinataire} concernant {objet}. Informations demandées: {informations_demandees}. Délai: {delai_reponse} jours.'
+    },
+    {
+        id: 'relance-info-complementaires',
+        title: 'Relance - Demande d\'Informations Complémentaires',
+        category: 'Courriers et Mises en Demeure',
+        description: 'Courrier de relance pour informations complémentaires non fournies',
+        filename: 'COURRIERTYPE-RELANCEDEMANDED\'INFORMATIONCOMPLEMENTAIRES.docx',
+        filePath: '/home/ubuntu/upload/COURRIERTYPE-RELANCEDEMANDED\'INFORMATIONCOMPLEMENTAIRES.docx',
+        fields: [
+            { name: 'destinataire', label: 'Destinataire', type: 'text', required: true },
+            { name: 'date_demande_initiale', label: 'Date de la Demande Initiale', type: 'date', required: true },
+            { name: 'reference_demande', label: 'Référence de la Demande', type: 'text', required: true },
+            { name: 'nouveau_delai', label: 'Nouveau Délai (jours)', type: 'number', required: true }
+        ],
+        aiPrompt: 'Rédiger une relance à {destinataire} concernant la demande d\'informations (réf: {reference_demande}) du {date_demande_initiale} restée sans réponse. Nouveau délai: {nouveau_delai} jours.'
+    },
+    {
+        id: 'reception-provisoire',
+        title: 'Demande de Réception Provisoire',
+        category: 'Réceptions et Livraisons',
+        description: 'Demande de réception provisoire des travaux',
+        filename: 'PORTOBTP-MODELETYPEDEDEMANDEDERECEPTIONPROVISOIREDESTRAVAUX.docx',
+        filePath: '/home/ubuntu/upload/PORTOBTP-MODELETYPEDEDEMANDEDERECEPTIONPROVISOIREDESTRAVAUX.docx',
+        fields: [
+            { name: 'projet', label: 'Nom du Projet', type: 'text', required: true },
+            { name: 'maitre_ouvrage', label: 'Maître d\'Ouvrage', type: 'text', required: true },
+            { name: 'date_achevement', label: 'Date d\'Achèvement', type: 'date', required: true },
+            { name: 'travaux_realises', label: 'Travaux Réalisés', type: 'textarea', required: true },
+            { name: 'date_souhaitee', label: 'Date de Réception Souhaitée', type: 'date', required: true }
+        ],
+        aiPrompt: 'Rédiger une demande de réception provisoire pour le projet {projet} auprès du maître d\'ouvrage {maitre_ouvrage}. Travaux achevés le {date_achevement}. Description: {travaux_realises}. Date souhaitée: {date_souhaitee}.'
+    },
+    {
+        id: 'reception-partielle',
+        title: 'Réception Partielle Provisoire',
+        category: 'Réceptions et Livraisons',
+        description: 'Modèle de réception partielle provisoire des travaux',
+        filename: 'PORTEOBTP-MODELETYPERECEPTIONPARTIELLEPROVISOIRE.docx',
+        filePath: '/home/ubuntu/upload/PORTEOBTP-MODELETYPERECEPTIONPARTIELLEPROVISOIRE.docx',
+        fields: [
+            { name: 'projet', label: 'Nom du Projet', type: 'text', required: true },
+            { name: 'lot_concerne', label: 'Lot Concerné', type: 'text', required: true },
+            { name: 'travaux_recus', label: 'Travaux Reçus', type: 'textarea', required: true },
+            { name: 'reserves', label: 'Réserves Émises', type: 'textarea', required: false }
+        ],
+        aiPrompt: 'Rédiger un procès-verbal de réception partielle provisoire pour le lot {lot_concerne} du projet {projet}. Travaux reçus: {travaux_recus}. Réserves: {reserves}.'
+    },
+    {
+        id: 'reception-definitive',
+        title: 'Demande de Réception Définitive',
+        category: 'Réceptions et Livraisons',
+        description: 'Demande de réception définitive des travaux',
+        filename: 'PORTEOBTP-MODELETYPEDEMANDEDERECEPTIONDEFINITIVEDESTRAVAUX.docx',
+        filePath: '/home/ubuntu/upload/PORTEOBTP-MODELETYPEDEMANDEDERECEPTIONDEFINITIVEDESTRAVAUX.docx',
+        fields: [
+            { name: 'projet', label: 'Nom du Projet', type: 'text', required: true },
+            { name: 'date_reception_provisoire', label: 'Date de Réception Provisoire', type: 'date', required: true },
+            { name: 'levee_reserves', label: 'Levée des Réserves', type: 'textarea', required: true },
+            { name: 'date_souhaitee', label: 'Date de Réception Définitive Souhaitée', type: 'date', required: true }
+        ],
+        aiPrompt: 'Rédiger une demande de réception définitive pour le projet {projet}. Réception provisoire effectuée le {date_reception_provisoire}. Levée des réserves: {levee_reserves}. Date souhaitée: {date_souhaitee}.'
+    },
+    {
+        id: 'paiement-retenue-garantie',
+        title: 'Demande de Paiement - Retenue de Garantie',
+        category: 'Réceptions et Livraisons',
+        description: 'Demande de paiement de la retenue de garantie et mainlevée sur caution',
+        filename: 'PORTEOBTP-MODELETYPEDEDEMANDEDEPAIEMENTDELARETENUEDEGARANTIE-MAINLEVEESURLACAUTION.docx',
+        filePath: '/home/ubuntu/upload/PORTEOBTP-MODELETYPEDEDEMANDEDEPAIEMENTDELARETENUEDEGARANTIE-MAINLEVEESURLACAUTION.docx',
+        fields: [
+            { name: 'projet', label: 'Nom du Projet', type: 'text', required: true },
+            { name: 'montant_retenue', label: 'Montant de la Retenue', type: 'number', required: true },
+            { name: 'date_reception_definitive', label: 'Date de Réception Définitive', type: 'date', required: true },
+            { name: 'reference_caution', label: 'Référence de la Caution', type: 'text', required: true }
+        ],
+        aiPrompt: 'Rédiger une demande de paiement de la retenue de garantie de {montant_retenue} pour le projet {projet}. Réception définitive: {date_reception_definitive}. Caution réf: {reference_caution}.'
+    },
+    {
+        id: 'levee-cautionnement',
+        title: 'Demande de Levée de Cautionnement Définitif',
+        category: 'Réceptions et Livraisons',
+        description: 'Demande de levée du cautionnement définitif',
+        filename: 'PORTEOBTP-MODELETYPEDEDEMANDEDELEVEEDECAUTIONNEMENTDEFINITIF.docx',
+        filePath: '/home/ubuntu/upload/PORTEOBTP-MODELETYPEDEDEMANDEDELEVEEDECAUTIONNEMENTDEFINITIF.docx',
+        fields: [
+            { name: 'projet', label: 'Nom du Projet', type: 'text', required: true },
+            { name: 'organisme_caution', label: 'Organisme de Caution', type: 'text', required: true },
+            { name: 'reference_caution', label: 'Référence de la Caution', type: 'text', required: true },
+            { name: 'date_reception_definitive', label: 'Date de Réception Définitive', type: 'date', required: true }
+        ],
+        aiPrompt: 'Rédiger une demande de levée de cautionnement définitif auprès de {organisme_caution} pour le projet {projet}. Caution réf: {reference_caution}. Réception définitive: {date_reception_definitive}.'
+    },
+    {
+        id: 'prolongation-delais',
+        title: 'Demande de Prolongation de Délais',
+        category: 'Gestion de Chantier',
+        description: 'Demande de prolongation des délais d\'exécution',
+        filename: 'MODELETYPEDEMANDEDEPROLONGATIONDEDELAIS.docx',
+        filePath: '/home/ubuntu/upload/MODELETYPEDEMANDEDEPROLONGATIONDEDELAIS.docx',
+        fields: [
+            { name: 'projet', label: 'Nom du Projet', type: 'text', required: true },
+            { name: 'delai_initial', label: 'Délai Initial (jours)', type: 'number', required: true },
+            { name: 'prolongation_demandee', label: 'Prolongation Demandée (jours)', type: 'number', required: true },
+            { name: 'motifs', label: 'Motifs de la Demande', type: 'textarea', required: true },
+            { name: 'justificatifs', label: 'Justificatifs', type: 'textarea', required: true }
+        ],
+        aiPrompt: 'Rédiger une demande de prolongation de {prolongation_demandee} jours pour le projet {projet} (délai initial: {delai_initial} jours). Motifs: {motifs}. Justificatifs: {justificatifs}.'
+    },
+    {
+        id: 'deplacement-reseau-dommages',
+        title: 'Déplacement de Réseau - Réparation des Dommages',
+        category: 'Gestion de Chantier',
+        description: 'Courrier concernant les dommages lors du déplacement de réseaux',
+        filename: 'PORTEOBTP-COURRIERTYPE-DEPLACEMENTDERESEAU-REPARATIONDESDOMMAGES.docx',
+        filePath: '/home/ubuntu/upload/PORTEOBTP-COURRIERTYPE-DEPLACEMENTDERESEAU-REPARATIONDESDOMMAGES.docx',
+        fields: [
+            { name: 'concessionnaire', label: 'Concessionnaire', type: 'text', required: true },
+            { name: 'type_reseau', label: 'Type de Réseau', type: 'text', required: true },
+            { name: 'date_incident', label: 'Date de l\'Incident', type: 'date', required: true },
+            { name: 'dommages', label: 'Description des Dommages', type: 'textarea', required: true },
+            { name: 'demande_reparation', label: 'Demande de Réparation', type: 'textarea', required: true }
+        ],
+        aiPrompt: 'Rédiger un courrier au concessionnaire {concessionnaire} concernant les dommages sur le réseau {type_reseau} survenus le {date_incident}. Dommages: {dommages}. Demande: {demande_reparation}.'
+    },
+    {
+        id: 'liberation-emprise',
+        title: 'Libération de l\'Emprise des Travaux',
+        category: 'Gestion de Chantier',
+        description: 'Courrier de libération de l\'emprise des travaux',
+        filename: 'MODELETYPEDECOURRIER-LIBERATIONDEL\'EMPRISEDESTRAVAUX.docx',
+        filePath: '/home/ubuntu/upload/MODELETYPEDECOURRIER-LIBERATIONDEL\'EMPRISEDESTRAVAUX.docx',
+        fields: [
+            { name: 'projet', label: 'Nom du Projet', type: 'text', required: true },
+            { name: 'localisation', label: 'Localisation de l\'Emprise', type: 'text', required: true },
+            { name: 'date_liberation', label: 'Date de Libération', type: 'date', required: true },
+            { name: 'etat_lieux', label: 'État des Lieux', type: 'textarea', required: true }
+        ],
+        aiPrompt: 'Rédiger un courrier de libération de l\'emprise des travaux pour le projet {projet} située à {localisation}. Date de libération: {date_liberation}. État des lieux: {etat_lieux}.'
+    },
+    {
+        id: 'formalisation-instruction-verbale',
+        title: 'Formalisation d\'une Instruction Verbale',
+        category: 'Gestion de Chantier',
+        description: 'Courrier de formalisation d\'une instruction verbale',
+        filename: 'MODELETYPEDECOURRIER-FORMALISATIOND\'UNEINSTRUCTIONVERBALE.docx',
+        filePath: '/home/ubuntu/upload/MODELETYPEDECOURRIER-FORMALISATIOND\'UNEINSTRUCTIONVERBALE.docx',
+        fields: [
+            { name: 'destinataire', label: 'Destinataire', type: 'text', required: true },
+            { name: 'date_instruction', label: 'Date de l\'Instruction Verbale', type: 'date', required: true },
+            { name: 'lieu', label: 'Lieu', type: 'text', required: true },
+            { name: 'objet', label: 'Objet de l\'Instruction', type: 'text', required: true },
+            { name: 'details_instruction', label: 'Détails de l\'Instruction', type: 'textarea', required: true }
+        ],
+        aiPrompt: 'Rédiger une formalisation écrite de l\'instruction verbale donnée à {destinataire} le {date_instruction} à {lieu}. Objet: {objet}. Détails: {details_instruction}.'
+    },
+    {
+        id: 'atteinte-masse-initiale',
+        title: 'Atteinte de la Masse Initiale des Travaux',
+        category: 'Gestion de Chantier',
+        description: 'Courrier d\'atteinte de la masse initiale des travaux',
+        filename: 'MODELETYPECOURRIER-ATTEINTEDELAMASSEINITIALEDESTRAVAUX.docx',
+        filePath: '/home/ubuntu/upload/MODELETYPECOURRIER-ATTEINTEDELAMASSEINITIALEDESTRAVAUX.docx',
+        fields: [
+            { name: 'projet', label: 'Nom du Projet', type: 'text', required: true },
+            { name: 'montant_initial', label: 'Montant Initial du Marché', type: 'number', required: true },
+            { name: 'montant_atteint', label: 'Montant Atteint', type: 'number', required: true },
+            { name: 'date_atteinte', label: 'Date d\'Atteinte', type: 'date', required: true },
+            { name: 'travaux_supplementaires', label: 'Travaux Supplémentaires Prévus', type: 'textarea', required: false }
+        ],
+        aiPrompt: 'Rédiger un courrier informant de l\'atteinte de la masse initiale du marché pour le projet {projet}. Montant initial: {montant_initial}, montant atteint: {montant_atteint} le {date_atteinte}. Travaux supplémentaires: {travaux_supplementaires}.'
+    },
+    {
+        id: 'contrat-transport',
+        title: 'Contrat de Transport - Matériaux/Fournitures',
+        category: 'Contrats et Conventions',
+        description: 'Contrat type de transport de matériaux ou fournitures',
+        filename: 'CONTRATTYPEDETRANSPORTMATERIAUXOUDEFOURNITURES.docx',
+        filePath: '/home/ubuntu/upload/CONTRATTYPEDETRANSPORTMATERIAUXOUDEFOURNITURES.docx',
+        fields: [
+            { name: 'transporteur', label: 'Nom du Transporteur', type: 'text', required: true },
+            { name: 'donneur_ordre', label: 'Donneur d\'Ordre', type: 'text', required: true },
+            { name: 'materiau', label: 'Type de Matériau', type: 'text', required: true },
+            { name: 'quantite', label: 'Quantité', type: 'text', required: true },
+            { name: 'lieu_chargement', label: 'Lieu de Chargement', type: 'text', required: true },
+            { name: 'lieu_livraison', label: 'Lieu de Livraison', type: 'text', required: true },
+            { name: 'tarif', label: 'Tarif', type: 'number', required: true }
+        ],
+        aiPrompt: 'Rédiger un contrat de transport entre {donneur_ordre} et {transporteur} pour le transport de {quantite} de {materiau} de {lieu_chargement} à {lieu_livraison}. Tarif: {tarif}.'
+    },
+    {
+        id: 'protocole-transactionnel-carriere',
+        title: 'Protocole Transactionnel - Carrière',
+        category: 'Contrats et Conventions',
+        description: 'Modèle de protocole transactionnel pour exploitation de carrière',
+        filename: 'MODELETYPEPROTOCOLETRANSACTIONNELCARRIERE.docx',
+        filePath: '/home/ubuntu/upload/MODELETYPEPROTOCOLETRANSACTIONNELCARRIERE.docx',
+        fields: [
+            { name: 'exploitant', label: 'Exploitant', type: 'text', required: true },
+            { name: 'proprietaire', label: 'Propriétaire du Terrain', type: 'text', required: true },
+            { name: 'localisation', label: 'Localisation de la Carrière', type: 'text', required: true },
+            { name: 'duree', label: 'Durée d\'Exploitation (mois)', type: 'number', required: true },
+            { name: 'indemnisation', label: 'Montant de l\'Indemnisation', type: 'number', required: true },
+            { name: 'conditions', label: 'Conditions Particulières', type: 'textarea', required: false }
+        ],
+        aiPrompt: 'Rédiger un protocole transactionnel entre {exploitant} et {proprietaire} pour l\'exploitation d\'une carrière à {localisation} pendant {duree} mois. Indemnisation: {indemnisation}. Conditions: {conditions}.'
+    },
+    {
+        id: 'location-terrain-stockage',
+        title: 'Contrat de Location de Terrain - Stockage',
+        category: 'Contrats et Conventions',
+        description: 'Contrat de location de terrain pour stockage de matériaux',
+        filename: 'CONTRATDELOCATIONDETERRAINPOURSTOCKAGEDEMATERIAUX.docx',
+        filePath: '/home/ubuntu/upload/CONTRATDELOCATIONDETERRAINPOURSTOCKAGEDEMATERIAUX.docx',
+        fields: [
+            { name: 'locataire', label: 'Locataire', type: 'text', required: true },
+            { name: 'bailleur', label: 'Bailleur', type: 'text', required: true },
+            { name: 'localisation', label: 'Localisation du Terrain', type: 'text', required: true },
+            { name: 'superficie', label: 'Superficie (m²)', type: 'number', required: true },
+            { name: 'duree', label: 'Durée de Location (mois)', type: 'number', required: true },
+            { name: 'loyer', label: 'Loyer Mensuel', type: 'number', required: true },
+            { name: 'usage', label: 'Usage Prévu', type: 'textarea', required: true }
+        ],
+        aiPrompt: 'Rédiger un contrat de location de terrain entre {bailleur} et {locataire} pour le stockage de matériaux. Terrain de {superficie} m² situé à {localisation}. Durée: {duree} mois. Loyer: {loyer}. Usage: {usage}.'
+    },
+    {
+        id: 'mise-depot-definitif',
+        title: 'Contrat de Mise en Dépôt Définitif de Matériaux',
+        category: 'Contrats et Conventions',
+        description: 'Contrat de mise en dépôt définitif de matériaux',
+        filename: 'MODELETYPEDECONTRATDEMISEENDEPOTDEFINITIFDEMATERIAUX.docx',
+        filePath: '/home/ubuntu/upload/MODELETYPEDECONTRATDEMISEENDEPOTDEFINITIFDEMATERIAUX.docx',
+        fields: [
+            { name: 'deposant', label: 'Déposant', type: 'text', required: true },
+            { name: 'proprietaire', label: 'Propriétaire du Terrain', type: 'text', required: true },
+            { name: 'localisation', label: 'Localisation', type: 'text', required: true },
+            { name: 'type_materiaux', label: 'Type de Matériaux', type: 'text', required: true },
+            { name: 'volume', label: 'Volume (m³)', type: 'number', required: true },
+            { name: 'indemnisation', label: 'Indemnisation', type: 'number', required: true }
+        ],
+        aiPrompt: 'Rédiger un contrat de mise en dépôt définitif entre {deposant} et {proprietaire} pour {volume} m³ de {type_materiaux} à {localisation}. Indemnisation: {indemnisation}.'
+    },
+    {
+        id: 'emprunt-materiaux-rural',
+        title: 'Emprunt de Matériaux en Zone Rurale',
+        category: 'Contrats et Conventions',
+        description: 'Convention d\'emprunt de matériaux en zone rurale',
+        filename: 'EMPRUNTDEMATERIAUXENZONERURALE.docx',
+        filePath: '/home/ubuntu/upload/EMPRUNTDEMATERIAUXENZONERURALE.docx',
+        fields: [
+            { name: 'emprunteur', label: 'Emprunteur', type: 'text', required: true },
+            { name: 'proprietaire', label: 'Propriétaire/Village', type: 'text', required: true },
+            { name: 'localisation', label: 'Localisation', type: 'text', required: true },
+            { name: 'type_materiaux', label: 'Type de Matériaux', type: 'text', required: true },
+            { name: 'quantite', label: 'Quantité Estimée', type: 'text', required: true },
+            { name: 'compensation', label: 'Compensation', type: 'textarea', required: true }
+        ],
+        aiPrompt: 'Rédiger une convention d\'emprunt de matériaux entre {emprunteur} et {proprietaire} pour l\'extraction de {quantite} de {type_materiaux} à {localisation}. Compensation: {compensation}.'
+    },
+    {
+        id: 'mise-disposition-terrain-administration',
+        title: 'Mise à Disposition de Terrain - Administration',
+        category: 'Mise à Disposition de Terrains',
+        description: 'Convention de mise à disposition de terrain nu par une administration',
+        filename: 'PORTEOBTPCI-MODELETYPE-MISEADISPOSITIONDETERRAINNUPARUNEADMINISTRATION.docx',
+        filePath: '/home/ubuntu/upload/PORTEOBTPCI-MODELETYPE-MISEADISPOSITIONDETERRAINNUPARUNEADMINISTRATION.docx',
+        fields: [
+            { name: 'administration', label: 'Administration', type: 'text', required: true },
+            { name: 'beneficiaire', label: 'Bénéficiaire', type: 'text', required: true },
+            { name: 'localisation', label: 'Localisation du Terrain', type: 'text', required: true },
+            { name: 'superficie', label: 'Superficie (m²)', type: 'number', required: true },
+            { name: 'duree', label: 'Durée (mois)', type: 'number', required: true },
+            { name: 'usage', label: 'Usage Prévu', type: 'textarea', required: true }
+        ],
+        aiPrompt: 'Rédiger une convention de mise à disposition de terrain entre {administration} et {beneficiaire}. Terrain de {superficie} m² à {localisation} pour {duree} mois. Usage: {usage}.'
+    },
+    {
+        id: 'mise-disposition-terrain-village',
+        title: 'Mise à Disposition de Terrain - Village',
+        category: 'Mise à Disposition de Terrains',
+        description: 'Convention de mise à disposition de terrain nu par un village',
+        filename: 'PORTEOBTPCI-MODELETYPE-MISEADISPOSITIONDETERRAINNUPARUNVILLAGE.docx',
+        filePath: '/home/ubuntu/upload/PORTEOBTPCI-MODELETYPE-MISEADISPOSITIONDETERRAINNUPARUNVILLAGE.docx',
+        fields: [
+            { name: 'village', label: 'Nom du Village', type: 'text', required: true },
+            { name: 'chef_village', label: 'Chef du Village', type: 'text', required: true },
+            { name: 'beneficiaire', label: 'Bénéficiaire', type: 'text', required: true },
+            { name: 'localisation', label: 'Localisation du Terrain', type: 'text', required: true },
+            { name: 'superficie', label: 'Superficie (m²)', type: 'number', required: true },
+            { name: 'duree', label: 'Durée (mois)', type: 'number', required: true },
+            { name: 'compensation', label: 'Compensation', type: 'textarea', required: true }
+        ],
+        aiPrompt: 'Rédiger une convention de mise à disposition de terrain entre le village de {village} (représenté par {chef_village}) et {beneficiaire}. Terrain de {superficie} m² à {localisation} pour {duree} mois. Compensation: {compensation}.'
+    },
+    {
+        id: 'mise-disposition-terrain-particulier',
+        title: 'Mise à Disposition de Terrain - Particulier',
+        category: 'Mise à Disposition de Terrains',
+        description: 'Convention de mise à disposition de terrain nu par un particulier',
+        filename: 'PORTEOBTPCI-MODELETYPE-MISEADISPOSITIONDETERRAINNUPARUNPARTICULIER.docx',
+        filePath: '/home/ubuntu/upload/PORTEOBTPCI-MODELETYPE-MISEADISPOSITIONDETERRAINNUPARUNPARTICULIER.docx',
+        fields: [
+            { name: 'proprietaire', label: 'Propriétaire', type: 'text', required: true },
+            { name: 'beneficiaire', label: 'Bénéficiaire', type: 'text', required: true },
+            { name: 'localisation', label: 'Localisation du Terrain', type: 'text', required: true },
+            { name: 'superficie', label: 'Superficie (m²)', type: 'number', required: true },
+            { name: 'duree', label: 'Durée (mois)', type: 'number', required: true },
+            { name: 'indemnisation', label: 'Montant de l\'Indemnisation', type: 'number', required: true }
+        ],
+        aiPrompt: 'Rédiger une convention de mise à disposition de terrain entre {proprietaire} et {beneficiaire}. Terrain de {superficie} m² à {localisation} pour {duree} mois. Indemnisation: {indemnisation}.'
+    },
+    {
+        id: 'location-engins',
+        title: 'Contrat de Location d\'Engins',
+        category: 'Contrats et Conventions',
+        description: 'Contrat de location d\'engins de chantier',
+        filename: 'CONTRATDELOCATIOND\'ENGINS.docx',
+        filePath: '/home/ubuntu/upload/CONTRATDELOCATIOND\'ENGINS.docx',
+        fields: [
+            { name: 'locataire', label: 'Locataire', type: 'text', required: true },
+            { name: 'bailleur', label: 'Bailleur', type: 'text', required: true },
+            { name: 'type_engin', label: 'Type d\'Engin', type: 'text', required: true },
+            { name: 'caracteristiques', label: 'Caractéristiques', type: 'textarea', required: true },
+            { name: 'duree', label: 'Durée de Location (jours)', type: 'number', required: true },
+            { name: 'tarif_journalier', label: 'Tarif Journalier', type: 'number', required: true },
+            { name: 'conditions', label: 'Conditions Particulières', type: 'textarea', required: false }
+        ],
+        aiPrompt: 'Rédiger un contrat de location d\'engins entre {bailleur} et {locataire} pour un {type_engin}. Caractéristiques: {caracteristiques}. Durée: {duree} jours à {tarif_journalier} par jour. Conditions: {conditions}.'
+    },
+    {
+        id: 'fourniture-materiaux',
+        title: 'Contrat de Fourniture de Matériaux',
+        category: 'Contrats et Conventions',
+        description: 'Contrat type de fourniture de matériaux',
+        filename: 'PORTEOBTPCI-MODELETYPECONTRATDEFOURNITUREDEMATERIAUX.docx',
+        filePath: '/home/ubuntu/upload/PORTEOBTPCI-MODELETYPECONTRATDEFOURNITUREDEMATERIAUX.docx',
+        fields: [
+            { name: 'fournisseur', label: 'Fournisseur', type: 'text', required: true },
+            { name: 'acheteur', label: 'Acheteur', type: 'text', required: true },
+            { name: 'materiau', label: 'Type de Matériau', type: 'text', required: true },
+            { name: 'quantite', label: 'Quantité', type: 'text', required: true },
+            { name: 'prix_unitaire', label: 'Prix Unitaire', type: 'number', required: true },
+            { name: 'delai_livraison', label: 'Délai de Livraison (jours)', type: 'number', required: true },
+            { name: 'lieu_livraison', label: 'Lieu de Livraison', type: 'text', required: true }
+        ],
+        aiPrompt: 'Rédiger un contrat de fourniture entre {fournisseur} et {acheteur} pour {quantite} de {materiau} à {prix_unitaire} l\'unité. Livraison à {lieu_livraison} sous {delai_livraison} jours.'
+    },
+    {
+        id: 'convention-soins-medicaux',
+        title: 'Convention pour les Soins Médicaux',
+        category: 'Autres Documents',
+        description: 'Convention pour la prise en charge des soins médicaux',
+        filename: 'CONVENTIONPOURLESSOINSMEDICAUX-MODELE.docx',
+        filePath: '/home/ubuntu/upload/CONVENTIONPOURLESSOINSMEDICAUX-MODELE.docx',
+        fields: [
+            { name: 'entreprise', label: 'Entreprise', type: 'text', required: true },
+            { name: 'etablissement_sante', label: 'Établissement de Santé', type: 'text', required: true },
+            { name: 'effectif', label: 'Effectif Concerné', type: 'number', required: true },
+            { name: 'prestations', label: 'Prestations Couvertes', type: 'textarea', required: true },
+            { name: 'tarifs', label: 'Tarifs Négociés', type: 'textarea', required: true }
+        ],
+        aiPrompt: 'Rédiger une convention de soins médicaux entre {entreprise} et {etablissement_sante} pour {effectif} personnes. Prestations: {prestations}. Tarifs: {tarifs}.'
+    },
+    {
+        id: 'conditions-generales-vente',
+        title: 'Conditions Générales de Vente',
+        category: 'Autres Documents',
+        description: 'Conditions générales de vente',
+        filename: 'CONDITIONSGENERALESDEVENTE.docx',
+        filePath: '/home/ubuntu/upload/CONDITIONSGENERALESDEVENTE.docx',
+        fields: [
+            { name: 'entreprise', label: 'Nom de l\'Entreprise', type: 'text', required: true },
+            { name: 'activite', label: 'Activité Principale', type: 'text', required: true },
+            { name: 'modalites_paiement', label: 'Modalités de Paiement', type: 'textarea', required: true },
+            { name: 'delai_livraison', label: 'Délai de Livraison Standard (jours)', type: 'number', required: true },
+            { name: 'garanties', label: 'Garanties Offertes', type: 'textarea', required: true }
+        ],
+        aiPrompt: 'Rédiger des conditions générales de vente pour {entreprise} spécialisée dans {activite}. Paiement: {modalites_paiement}. Livraison: {delai_livraison} jours. Garanties: {garanties}.'
+    },
+    {
+        id: 'conditions-generales-achat',
+        title: 'Conditions Générales d\'Achat',
+        category: 'Autres Documents',
+        description: 'Conditions générales d\'achat',
+        filename: 'CONDITIONSGENERALESD\'ACHAT.docx',
+        filePath: '/home/ubuntu/upload/CONDITIONSGENERALESD\'ACHAT.docx',
+        fields: [
+            { name: 'entreprise', label: 'Nom de l\'Entreprise', type: 'text', required: true },
+            { name: 'activite', label: 'Activité Principale', type: 'text', required: true },
+            { name: 'exigences_qualite', label: 'Exigences Qualité', type: 'textarea', required: true },
+            { name: 'modalites_paiement', label: 'Modalités de Paiement', type: 'textarea', required: true },
+            { name: 'penalites', label: 'Pénalités de Retard', type: 'textarea', required: true }
+        ],
+        aiPrompt: 'Rédiger des conditions générales d\'achat pour {entreprise} spécialisée dans {activite}. Qualité: {exigences_qualite}. Paiement: {modalites_paiement}. Pénalités: {penalites}.'
+    }
+];

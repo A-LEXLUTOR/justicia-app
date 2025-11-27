@@ -1,0 +1,7 @@
+{
+  "name": "JUSTICIA - Assistant Juridique IA",
+  "description": "Plateforme d'analyse juridique avec IA collaborative, éditeur canvas et système RAG avancé",
+  "version": "2.0.0",
+  "type": "static-site",
+  "entrypoint": "index.html"
+}

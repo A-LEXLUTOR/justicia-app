@@ -1,0 +1,594 @@
+[
+  {
+    "filename": "CONDITIONSGENERALESD'ACHAT.docx",
+    "has_comments": false,
+    "comment_count": 0,
+    "comments": []
+  },
+  {
+    "filename": "CONDITIONSGENERALESDEVENTE.docx",
+    "has_comments": false,
+    "comment_count": 0,
+    "comments": []
+  },
+  {
+    "filename": "CONTRATDELOCATIOND'ENGINS.docx",
+    "has_comments": true,
+    "comment_count": 1,
+    "comments": [
+      {
+        "id": "0",
+        "author": "Yannick ATTOLOU-GBOHOUN",
+        "text": "Engins de chantier, camions bennes",
+        "associated_text": "CONTRAT DE LOCATION D’ENGINS"
+      }
+    ]
+  },
+  {
+    "filename": "CONTRATDELOCATIONDETERRAINPOURSTOCKAGEDEMATERIAUX.docx",
+    "has_comments": false,
+    "comment_count": 0,
+    "comments": []
+  },
+  {
+    "filename": "CONTRATTYPEDETRANSPORTMATERIAUXOUDEFOURNITURES.docx",
+    "has_comments": true,
+    "comment_count": 5,
+    "comments": [
+      {
+        "id": "0",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Bitume, acier, ciment, concassés, matériaux latéritiques, etc.",
+        "associated_text": "MATÉRIAUX/FOURNITURES"
+      },
+      {
+        "id": "2",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Préciser le type de matériau/fourniture",
+        "associated_text": "[-]"
+      },
+      {
+        "id": "3",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Préciser le lieu de départ et le lieu d’arrivée",
+        "associated_text": "[-] à [-] "
+      },
+      {
+        "id": "4",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Préciser le type de matériau/fourniture. Le lieu de départ et le lieu d’arrivée",
+        "associated_text": "[-] de [-] à [-]."
+      },
+      {
+        "id": "5",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Liste non exhaustive. Elle peut être complétée en fonction des spécificités des prestations",
+        "associated_text": "4. [-]."
+      }
+    ]
+  },
+  {
+    "filename": "CONVENTIONPOURLESSOINSMEDICAUX-MODELE.docx",
+    "has_comments": false,
+    "comment_count": 0,
+    "comments": []
+  },
+  {
+    "filename": "COURRIERTYPE-DEMANDED'INFORMATIONCOMPLEMENTAIRES.docx",
+    "has_comments": false,
+    "comment_count": 0,
+    "comments": []
+  },
+  {
+    "filename": "COURRIERTYPE-RELANCEDEMANDED'INFORMATIONCOMPLEMENTAIRES.docx",
+    "has_comments": true,
+    "comment_count": 1,
+    "comments": [
+      {
+        "id": "0",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Ou impactera",
+        "associated_text": "susceptible d’impacter "
+      }
+    ]
+  },
+  {
+    "filename": "COURRIERTYPEDEVALIDATIONDEPLANS.docx",
+    "has_comments": true,
+    "comment_count": 5,
+    "comments": [
+      {
+        "id": "0",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Nom mission de Contrôle",
+        "associated_text": "BNETD"
+      },
+      {
+        "id": "2",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Vérifier les articles pour chacun des Marchés",
+        "associated_text": "Extrait CCTP Art 3.1.2 : « L’INGÉNIEUR dispose d’un délai de trente (30) jours pour viser chaque plan ou faire connaitre les modifications à y apporter.  Au-delà, le plan sera considéré comme non approuvé »."
+      },
+      {
+        "id": "3",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Vérifier les articles pour chacun des Marchés",
+        "associated_text": "l’article 3.1.2 du CCTP : « L’ENTREPRENEUR ne peut commencer l’exécution d’un ouvrage qu’après avoir reçu le visa de l’INGÉNIEUR sur les documents nécessaires à cette exécution. »."
+      },
+      {
+        "id": "4",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "À garder en cas d’absence d’APD, sinon, a retirer",
+        "associated_text": "En outre, afin de pallier à l’avenir à ce genre de situation, nous sollicitons, l’organisation de manière hebdomadaire avec notre bureau d’étude, d’une réunion de \"co-conception\" des plans, afin de fluidifier leur validation et d’accompagner la montée en puissance des ateliers du chantier. Vous voudrez bien nous faire un retour sur cette proposition."
+      },
+      {
+        "id": "5",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Extrait état navette / plans en attente de validation",
+        "associated_text": "Liste des plans en attente"
+      }
+    ]
+  },
+  {
+    "filename": "EMPRUNTDEMATERIAUXENZONERURALE.docx",
+    "has_comments": false,
+    "comment_count": 0,
+    "comments": []
+  },
+  {
+    "filename": "MODELETYPECOURRIER-ATTEINTEDELAMASSEINITIALEDESTRAVAUX.docx",
+    "has_comments": true,
+    "comment_count": 2,
+    "comments": [
+      {
+        "id": "0",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Ou MOD si il en existe",
+        "associated_text": "MOA"
+      },
+      {
+        "id": "1",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "La disposition et l’article correspondant sont à vérifier dans chaque Marché",
+        "associated_text": "imposent à l’Entrepreneur la poursuite des travaux objet du Marché jusqu’à l’achèvement de l’ouvrage (CCAG Art 16.1). "
+      }
+    ]
+  },
+  {
+    "filename": "MODELETYPEDECONTRATDEMISEENDEPOTDEFINITIFDEMATERIAUX.docx",
+    "has_comments": false,
+    "comment_count": 0,
+    "comments": []
+  },
+  {
+    "filename": "MODELETYPEDECOURRIER-FORMALISATIOND'UNEINSTRUCTIONVERBALE.docx",
+    "has_comments": true,
+    "comment_count": 5,
+    "comments": [
+      {
+        "id": "0",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Ou MOD",
+        "associated_text": "[MOA]"
+      },
+      {
+        "id": "1",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Visite / réunion",
+        "associated_text": "[-]"
+      },
+      {
+        "id": "2",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Nature des travaux demandés",
+        "associated_text": "[-]"
+      },
+      {
+        "id": "3",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Lister les tâches",
+        "associated_text": "[-]"
+      },
+      {
+        "id": "4",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Prendre une sécurité sur le délai strictement nécessaire",
+        "associated_text": "(durée supplémentaire estimée [-] mois)"
+      }
+    ]
+  },
+  {
+    "filename": "MODELETYPEDECOURRIER-LIBERATIONDEL'EMPRISEDESTRAVAUX.docx",
+    "has_comments": true,
+    "comment_count": 3,
+    "comments": [
+      {
+        "id": "1",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Préciser le type de blocage présence : L’indemnisation des cultures, d’habitations, de commerces à détruireLe dévoiement de réseaux",
+        "associated_text": "[-]"
+      },
+      {
+        "id": "2",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Modèle de texte libération d’emprise réseaux Vérifier le numéro de prix",
+        "associated_text": "À cet effet, pour la réalisation de ces activités, le Marché a prévu des provisions gérées par le Maitre d’Ouvrage Délégué (Prix [-]). Ainsi, dès l’emprise libérée de ces obstacles physiques, notre « train » d’ateliers se mettrait en marche, les uns à la suite des autres, pour une production linéaire sur la base de rendements constants. Cependant, à ce jour, nous sommes en attente de la notification des entreprises chargées de procéder aux dévoiements nécessaires. Ne disposant pas d’une visibilité sur la date de démarrage et la durée des travaux de ces entreprises, nous sommes dans l’impossibilité d’organiser notre chantier. Cette situation fait décaler de manière non contrôlée le planning du Projet. "
+      },
+      {
+        "id": "3",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Modèle de textes / Cas de cultures et d’habitations",
+        "associated_text": "En conséquence : (i) les activités de débroussaillage, de dégagement d’emprise et de terrassement sont contraintes à l’arrêt sur certains linéaires du tracé, et (ii) nous connaissons des difficultés à finaliser le projet d’exécution du fait de l’impossibilité de réaliser des levés topographiques.La montée en puissance de nos ateliers est rendue quasi impossible par ces évènements, et nous subissons des surcoûts non prévisibles de production du fait de : La discontinuité dans l’exécution des travaux (perte de l’effet d’industrialisation du chantier) ;La baisse de nos rendements prévisionnels ; etL’immobilisation d’une partie de nos énergies (personnel et matériel).De plus, nous ne disposons pas d’une visibilité sur ces opérations d’acquisition de l’emprise accueillant l’ouvrage à construire (date fiable d’achèvement des recensements et des indemnisations). Nous sommes donc confrontés à des difficultés d’organisation du chantier.  Cette situation fait décaler de manière non maitrisée le planning de réalisation du Projet. "
+      }
+    ]
+  },
+  {
+    "filename": "MODELETYPEDEMANDEDEPROLONGATIONDEDELAIS.docx",
+    "has_comments": true,
+    "comment_count": 3,
+    "comments": [
+      {
+        "id": "0",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Ajouter en pièces jointes les constats contradictoires et les courriers envoyés pour étayer nos proposLibération d’emprises, augmentation de la masse initiale des travaux intempéries, retard de validation de plans, etc.",
+        "associated_text": "[-], [-], [-]. "
+      },
+      {
+        "id": "1",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Vérifier dans chaque Marché la correspondance du numéro d’article",
+        "associated_text": "Art 18.2.1 du CCAG « Lorsqu’un changement de la masse de travaux ou une modification de l’importance de certaines natures d’ouvrages, une substitution à des ouvrages initialement prévus d’ouvrages différents, une rencontre de difficultés imprévues au cours du chantier, un ajournement de travaux décidé par l’Autorité Contractante ou encore un retard dans l’exécution d’opérations préliminaires qui sont à la charge du Maître d’Ouvrage ou de travaux préalables qui font l’objet d’un autre marché, justifie soit une prolongation du délai d’exécution, soit le report du début des travaux, l’importance de la prolongation ou du report est débattue par le Maitre d’Ouvrage Délégué et le Maître d’œuvre avec l’Entrepreneur, puis elle est soumise à l’approbation de l’Autorité Contractante, et la décision prise par celuici est notifiée à l’Entrepreneur par ordre de service. »"
+      },
+      {
+        "id": "2",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Courriers et constats étayant de la survenance des faits nouveaux",
+        "associated_text": "[-]"
+      }
+    ]
+  },
+  {
+    "filename": "MODELETYPEPROTOCOLETRANSACTIONNELCARRIERE.docx",
+    "has_comments": true,
+    "comment_count": 1,
+    "comments": [
+      {
+        "id": "0",
+        "author": "HP",
+        "text": "Préambule",
+        "associated_text": ""
+      }
+    ]
+  },
+  {
+    "filename": "MODELETYPERETARDDESENTREPRISECHARGEESDESDEVOIEMENTSDERESEAUX.docx",
+    "has_comments": true,
+    "comment_count": 2,
+    "comments": [
+      {
+        "id": "0",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "L’objectif est d’émettre dans un cadre officiel les priorités sur les sections à libérer",
+        "associated_text": "L’organisation d’une réunion de coordination entre les acteurs du Projet (MOD, MOE, PORTEO BTP et les entreprises chargées des dévoiements de réseaux) ; "
+      },
+      {
+        "id": "1",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Courriers et constats étayant la non libération de l’emprise",
+        "associated_text": "[-]"
+      }
+    ]
+  },
+  {
+    "filename": "PORTEOBTP-COURRIERTYPE-DEPLACEMENTDERESEAU-REPARATIONDESDOMMAGES.docx",
+    "has_comments": false,
+    "comment_count": 0,
+    "comments": []
+  },
+  {
+    "filename": "PORTEOBTP-MODELETYPEDEDEMANDEDELEVEEDECAUTIONNEMENTDEFINITIF.docx",
+    "has_comments": true,
+    "comment_count": 3,
+    "comments": [
+      {
+        "id": "0",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Directeur des Marchés et Contrats",
+        "associated_text": "[-]"
+      },
+      {
+        "id": "1",
+        "author": "HP",
+        "text": "Responsable du Client chargé du suivi du Projet",
+        "associated_text": "[Poste occupé],"
+      },
+      {
+        "id": "2",
+        "author": "HP",
+        "text": "A définir selon les clauses du Marché",
+        "associated_text": "[--],"
+      }
+    ]
+  },
+  {
+    "filename": "PORTEOBTP-MODELETYPEDEDEMANDEDEPAIEMENTDELARETENUEDEGARANTIE-MAINLEVEESURLACAUTION.docx",
+    "has_comments": true,
+    "comment_count": 1,
+    "comments": [
+      {
+        "id": "0",
+        "author": "ATTOLOU GBOHOUN, Yannick B- A- (CEDEAO)",
+        "text": "Responsable du Client chargé du suivi du Projet",
+        "associated_text": "[Poste occupé],"
+      }
+    ]
+  },
+  {
+    "filename": "PORTEOBTP-MODELETYPEDEMANDEDERECEPTIONDEFINITIVEDESTRAVAUX.docx",
+    "has_comments": true,
+    "comment_count": 3,
+    "comments": [
+      {
+        "id": "0",
+        "author": "ATTOLOU GBOHOUN Yannick",
+        "text": "À adresser au MOD. EN l’absence de MOD il faudra envoyer le courrier au MOA En l’absence de Chef de Projet, l’adresser au DG AGEROUTE",
+        "associated_text": "AGEROUTE"
+      },
+      {
+        "id": "2",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "À vérifier. Le numéro d’article peut varier en fonction du Marché",
+        "associated_text": "40 du CCAG"
+      },
+      {
+        "id": "3",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Idem",
+        "associated_text": "40 du CCAG"
+      }
+    ]
+  },
+  {
+    "filename": "PORTEOBTP-MODELETYPERECEPTIONPARTIELLEPROVISOIRE.docx",
+    "has_comments": true,
+    "comment_count": 5,
+    "comments": [
+      {
+        "id": "0",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "En l’absence de MOD envoyer le courrier au MOA",
+        "associated_text": "AGEROUTE"
+      },
+      {
+        "id": "1",
+        "author": "Yannick ATTOLOU-GBOHOUN",
+        "text": "Responsable de l’Ageroute concerné",
+        "associated_text": "À l’attention de [-] "
+      },
+      {
+        "id": "2",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "À vérifier pour chaque Marché",
+        "associated_text": "39 du CCAG et du CCAP"
+      },
+      {
+        "id": "3",
+        "author": "Yannick ATTOLOU-GBOHOUN",
+        "text": "Partie du chantier concerné",
+        "associated_text": "de [-] à [-] "
+      },
+      {
+        "id": "4",
+        "author": "Yannick ATTOLOU-GBOHOUN",
+        "text": "Signataire du courrier",
+        "associated_text": "[-]"
+      }
+    ]
+  },
+  {
+    "filename": "PORTEOBTPCI-MISEENDEMEUREHSE-NOUVELLEMOUTUREDECONTRATS.docx",
+    "has_comments": true,
+    "comment_count": 1,
+    "comments": [
+      {
+        "id": "0",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "C’est le signataire du contrat",
+        "associated_text": "[Représentant Légal]"
+      }
+    ]
+  },
+  {
+    "filename": "PORTEOBTPCI-MISEENDEMEUREQUALITEDESTRAVAUX-NOUVELLEMOUTUREDECONTRATS.docx",
+    "has_comments": true,
+    "comment_count": 2,
+    "comments": [
+      {
+        "id": "0",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "C’est le signataire du contrat",
+        "associated_text": "[Représentant Légal]"
+      },
+      {
+        "id": "1",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Ou du non-respect des règles de l’art",
+        "associated_text": "non-conformités "
+      }
+    ]
+  },
+  {
+    "filename": "PORTEOBTPCI-MODELETYPE-MISEADISPOSITIONDETERRAINNUPARUNEADMINISTRATION.docx",
+    "has_comments": true,
+    "comment_count": 6,
+    "comments": [
+      {
+        "id": "0",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Titre du représentant de l’Administration concernée",
+        "associated_text": "[-],"
+      },
+      {
+        "id": "1",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Nom de l’administration concernée",
+        "associated_text": "« Commune »"
+      },
+      {
+        "id": "2",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Nom du Marché",
+        "associated_text": "[-]"
+      },
+      {
+        "id": "3",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Administration choisie",
+        "associated_text": "[-]"
+      },
+      {
+        "id": "4",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Ne garder que le(s) industrie(s) à mettre en place",
+        "associated_text": "(de fabrication d’enrobés, de béton et de concassage)"
+      },
+      {
+        "id": "5",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Insérer une période allant jusqu’à la réception provisoire",
+        "associated_text": "[-]"
+      }
+    ]
+  },
+  {
+    "filename": "PORTEOBTPCI-MODELETYPE-MISEADISPOSITIONDETERRAINNUPARUNPARTICULIER.docx",
+    "has_comments": true,
+    "comment_count": 4,
+    "comments": [
+      {
+        "id": "0",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Ne garder que le(s) industrie(s) à mettre en place",
+        "associated_text": "(de fabrication d’enrobés, de béton et de concassage)"
+      },
+      {
+        "id": "1",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "A vérifier",
+        "associated_text": "Le Contrat est consenti à titre gratuit et pendant toute la durée de la location."
+      },
+      {
+        "id": "2",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Insérer une période allant jusqu’à la réception provisoire",
+        "associated_text": "[-]"
+      },
+      {
+        "id": "3",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "À garder ?",
+        "associated_text": "ARTICLE 13 : FRAIS D’ENREGISTREMENTLes frais d’enregistrement et de timbre du présent Contrat sont à la charge de l’Entrepreneur qui s’y oblige expressément."
+      }
+    ]
+  },
+  {
+    "filename": "PORTEOBTPCI-MODELETYPE-MISEADISPOSITIONDETERRAINNUPARUNVILLAGE.docx",
+    "has_comments": true,
+    "comment_count": 6,
+    "comments": [
+      {
+        "id": "1",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Titre du représentant du village concernée",
+        "associated_text": "[-],"
+      },
+      {
+        "id": "2",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Nom de l’administration concernée",
+        "associated_text": "« Village »"
+      },
+      {
+        "id": "3",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Nom du Marché",
+        "associated_text": "[-]"
+      },
+      {
+        "id": "4",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Administration choisie",
+        "associated_text": "[-]"
+      },
+      {
+        "id": "5",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Ne garder que le(s) industrie(s) à mettre en place",
+        "associated_text": "(de fabrication d’enrobés, de béton et de concassage)"
+      },
+      {
+        "id": "6",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Insérer une période allant jusqu’à la réception provisoire",
+        "associated_text": "[-]"
+      }
+    ]
+  },
+  {
+    "filename": "PORTEOBTPCI-MODELETYPECONTRATDEFOURNITUREDEMATERIAUX.docx",
+    "has_comments": true,
+    "comment_count": 1,
+    "comments": [
+      {
+        "id": "1",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Possibilité de mettre en annexe une fiche technique (cf. annexe 2)",
+        "associated_text": "[-]"
+      }
+    ]
+  },
+  {
+    "filename": "PORTEOBTPCI-MODELETYPEMISEENDEMEUREAVANCEMENTDESTRAVAUX-NOUVELLEMOUTUREDECONTRATS.docx",
+    "has_comments": true,
+    "comment_count": 2,
+    "comments": [
+      {
+        "id": "0",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "C’est le signataire du contrat",
+        "associated_text": "[Représentant Légal]"
+      },
+      {
+        "id": "1",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "À compléter",
+        "associated_text": "[-]"
+      }
+    ]
+  },
+  {
+    "filename": "PORTOBTP-MODELETYPEDEDEMANDEDERECEPTIONPROVISOIREDESTRAVAUX.docx",
+    "has_comments": true,
+    "comment_count": 3,
+    "comments": [
+      {
+        "id": "0",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "Courrier adressé au MOD En l’absence de MOD, il faudra l’adresser au MOA",
+        "associated_text": "AGEROUTE"
+      },
+      {
+        "id": "1",
+        "author": "Yannick ATTOLOU GBOHOUN",
+        "text": "A vérifier, les numéros d’articles peuvent varier en fonction des Marchés",
+        "associated_text": "[39 du CCAG]"
+      },
+      {
+        "id": "2",
+        "author": "HP",
+        "text": "À définir selon les clauses du Marché",
+        "associated_text": "[J+7]. "
+      }
+    ]
+  }
+]

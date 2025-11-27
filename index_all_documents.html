@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Indexation RAG - Justicia</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Indexation des documents dans la base RAG</h1>
+    <div id="status">Initialisation...</div>
+    <div id="progress"></div>
+    <pre id="log"></pre>
+
+    <script type="module">
+        import { addDocumentToRAG, getRAGStats } from './services/ragService.enhanced.js';
+
+        const statusDiv = document.getElementById('status');
+        const progressDiv = document.getElementById('progress');
+        const logDiv = document.getElementById('log');
+
+        function log(message) {
+            console.log(message);
+            logDiv.textContent += message + '\n';
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        async function indexDocument(filePath) {
+            try {
+                const fileName = filePath.split('/').pop().replace('.txt', '');
+                log(`\n📄 Indexation: ${fileName}`);
+                
+                // Lire le fichier texte
+                const response = await fetch(`/extracted_texts/${fileName}.txt`);
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP: ${response.status}`);
+                }
+                const text = await response.text();
+                
+                log(`   ✓ ${text.length.toLocaleString()} caractères lus`);
+                
+                // Déterminer le type de document
+                let docType = 'other';
+                if (fileName.includes('CODE') || fileName.includes('code-du-travail')) {
+                    docType = 'legal_code';
+                } else if (fileName.includes('CONTRAT') || fileName.includes('CONVENTION')) {
+                    docType = 'contract';
+                } else if (fileName.includes('COURRIER') || fileName.includes('MODELE')) {
+                    docType = 'template';
+                } else if (fileName.includes('Analyses') || fileName.includes('Rapport')) {
+                    docType = 'report';
+                }
+                
+                // Indexer dans RAG
+                await addDocumentToRAG(text, fileName, docType);
+                
+                log(`   ✅ Indexé avec succès`);
+                return { success: true, fileName, charCount: text.length };
+                
+            } catch (error) {
+                log(`   ❌ Erreur: ${error.message}`);
+                return { success: false, fileName, error: error.message };
+            }
+        }
+
+        async function indexAllDocuments() {
+            try {
+                statusDiv.textContent = '🚀 Démarrage de l\'indexation...';
+                log('🚀 Indexation de tous les documents dans la base RAG\n');
+                
+                // Liste des fichiers à indexer
+                const files = [
+                    '101778freo',
+                    '1646410205RAPPORT-FINAL-DE-LA-PHASE-5-DU-DIALOGUE-POLITIQUE',
+                    '318-cote-divoire',
+                    'Analyses-Thematiques-Tome-2-Migration(1)',
+                    'AnalysesThématiques-Tome13-Urbanisation(1)',
+                    'AnalysesThématiques-Tome5-MortalitéV11725(1)',
+                    'Analyses_Thématiques_Tome_12_Caractéristiques_des_ménages_et(1)',
+                    'Analyses_Thématiques_Tome_1_Etat_et_structure_de_la_population(1)',
+                    'CONDITIONSGENERALESD\'ACHAT',
+                    'CONDITIONSGENERALESDEVENTE',
+                    'CONTRATDELOCATIOND\'ENGINS',
+                    'CONTRATDELOCATIONDETERRAINPOURSTOCKAGEDEMATERIAUX',
+                    'CONTRATTYPEDETRANSPORTMATERIAUXOUDEFOURNITURES',
+                    'CONVENTIONPOURLESSOINSMEDICAUX-MODELE',
+                    'COURRIERTYPE-DEMANDED\'INFORMATIONCOMPLEMENTAIRES',
+                    'COURRIERTYPE-RELANCEDEMANDED\'INFORMATIONCOMPLEMENTAIRES',
+                    'COURRIERTYPEDEVALIDATIONDEPLANS',
+                    'Chiffres_Clés_CIV_2025-16juillet25(1)',
+                    'EMPRUNTDEMATERIAUXENZONERURALE',
+                    'IDL-57793',
+                    'Le-code-du-travail-ivoirien-2023',
+                    'Livret_Genre_Homme_et_Femme_final(1)',
+                    'MODELEJOURNALDECHANTIER',
+                    'MODELETYPECOURRIER-ATTEINTEDELAMASSEINITIALEDESTRAVAUX',
+                    'MODELETYPEDECONTRATDEMISEENDEPOTDEFINITIFDEMATERIAUX',
+                    'MODELETYPEDECOURRIER-FORMALISATIOND\'UNEINSTRUCTIONVERBALE',
+                    'MODELETYPEDECOURRIER-LIBERATIONDEL\'EMPRISEDESTRAVAUX',
+                    'MODELETYPEDEMANDEDEPROLONGATIONDEDELAIS',
+                    'MODELETYPEPROTOCOLETRANSACTIONNELCARRIERE',
+                    'MODELETYPERETARDDESENTREPRISECHARGEESDESDEVOIEMENTSDERESEAUX',
+                    'PORTEOBTP-COURRIERTYPE-DEPLACEMENTDERESEAU-REPARATIONDESDOMMAGES',
+                    'PORTEOBTP-MODELETYPEDEDEMANDEDELEVEEDECAUTIONNEMENTDEFINITIF',
+                    'PORTEOBTP-MODELETYPEDEDEMANDEDEPAIEMENTDELARETENUEDEGARANTIE-MAINLEVEESURLACAUTION',
+                    'PORTEOBTP-MODELETYPEDEMANDEDERECEPTIONDEFINITIVEDESTRAVAUX',
+                    'PORTEOBTP-MODELETYPERECEPTIONPARTIELLEPROVISOIRE',
+                    'PORTEOBTPCI-MISEENDEMEUREHSE-NOUVELLEMOUTUREDECONTRATS',
+                    'PORTEOBTPCI-MISEENDEMEUREQUALITEDESTRAVAUX-NOUVELLEMOUTUREDECONTRATS',
+                    'PORTEOBTPCI-MODELETYPE-MISEADISPOSITIONDETERRAINNUPARUNEADMINISTRATION',
+                    'PORTEOBTPCI-MODELETYPE-MISEADISPOSITIONDETERRAINNUPARUNPARTICULIER',
+                    'PORTEOBTPCI-MODELETYPE-MISEADISPOSITIONDETERRAINNUPARUNVILLAGE',
+                    'PORTEOBTPCI-MODELETYPECONTRATDEFOURNITUREDEMATERIAUX',
+                    'PORTEOBTPCI-MODELETYPEMISEENDEMEUREAVANCEMENTDESTRAVAUX-NOUVELLEMOUTUREDECONTRATS',
+                    'PORTOBTP-MODELETYPEDEDEMANDEDERECEPTIONPROVISOIREDESTRAVAUX',
+                    'RevuedesFinancesPubliquesdelaCôted\'Ivoire'
+                ];
+                
+                const results = [];
+                let successCount = 0;
+                let totalChars = 0;
+                
+                for (let i = 0; i < files.length; i++) {
+                    const fileName = files[i];
+                    progressDiv.textContent = `📊 Progression: ${i + 1}/${files.length} (${Math.round((i + 1) / files.length * 100)}%)`;
+                    
+                    const result = await indexDocument(fileName);
+                    results.push(result);
+                    
+                    if (result.success) {
+                        successCount++;
+                        totalChars += result.charCount;
+                    }
+                    
+                    // Petite pause pour ne pas surcharger
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                }
+                
+                // Statistiques finales
+                log('\n' + '='.repeat(60));
+                log('✅ INDEXATION TERMINÉE');
+                log('='.repeat(60));
+                log(`Documents indexés: ${successCount}/${files.length}`);
+                log(`Total caractères: ${totalChars.toLocaleString()}`);
+                
+                const stats = await getRAGStats();
+                log(`\nStatistiques RAG:`);
+                log(`- Documents: ${stats.documentCount}`);
+                log(`- Chunks: ${stats.chunkCount}`);
+                log(`- Embeddings: ${stats.embeddingCount}`);
+                
+                statusDiv.textContent = `✅ Indexation terminée: ${successCount}/${files.length} documents`;
+                
+            } catch (error) {
+                log(`\n❌ ERREUR FATALE: ${error.message}`);
+                statusDiv.textContent = `❌ Erreur: ${error.message}`;
+                console.error(error);
+            }
+        }
+
+        // Démarrer l'indexation au chargement
+        window.addEventListener('load', () => {
+            setTimeout(indexAllDocuments, 1000);
+        });
+    </script>
+</body>
+</html>

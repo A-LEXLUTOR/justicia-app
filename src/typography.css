@@ -1,0 +1,177 @@
+/* Amélioration de la typographie globale pour Justicia */
+
+/* Tailles de police de base augmentées */
+:root {
+  --font-size-xs: 0.8125rem;    /* 13px */
+  --font-size-sm: 0.9375rem;    /* 15px */
+  --font-size-base: 1.0625rem;  /* 17px - augmenté */
+  --font-size-lg: 1.1875rem;    /* 19px */
+  --font-size-xl: 1.375rem;     /* 22px */
+  --font-size-2xl: 1.625rem;    /* 26px */
+  --font-size-3xl: 2rem;        /* 32px */
+  
+  --line-height-tight: 1.3;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.75;
+  
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+}
+
+/* Amélioration de la lisibilité du texte */
+body {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Messages de chat - typographie améliorée */
+.chat-message {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+}
+
+.chat-message p {
+  margin-bottom: 1rem;
+  line-height: var(--line-height-relaxed);
+}
+
+.chat-message p:last-child {
+  margin-bottom: 0;
+}
+
+/* Titres dans les messages */
+.chat-message h1 {
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-tight);
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.chat-message h2 {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-tight);
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.875rem;
+}
+
+.chat-message h3 {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Listes */
+.chat-message ul,
+.chat-message ol {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.chat-message li {
+  margin-bottom: 0.5rem;
+  line-height: var(--line-height-relaxed);
+}
+
+.chat-message li:last-child {
+  margin-bottom: 0;
+}
+
+/* Code inline */
+.chat-message code {
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+}
+
+/* Citations */
+.chat-message blockquote {
+  margin: 1.25rem 0;
+  padding: 1rem 1.25rem;
+  border-left-width: 4px;
+  font-style: normal;
+}
+
+.chat-message blockquote p {
+  margin-bottom: 0.5rem;
+}
+
+.chat-message blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Emphase */
+.chat-message strong {
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.chat-message em {
+  font-style: italic;
+}
+
+/* Liens */
+.chat-message a {
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.chat-message a:hover {
+  text-decoration: underline;
+}
+
+/* Tableaux */
+.chat-message table {
+  width: 100%;
+  margin: 1.25rem 0;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.chat-message th,
+.chat-message td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-message th {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* Espacement entre les sections */
+.chat-message > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+/* Amélioration de la scrollbar */
+.scrollbar-custom::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 4px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.5);
+}
